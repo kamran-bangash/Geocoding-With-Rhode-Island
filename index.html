@@ -75,9 +75,6 @@ accessToken: mapboxgl.accessToken,
 });
  
 map.addControl(geocoder);
-
-
-
 geocoder.on('result', e => {
     var { bbox, center } = e.result;
     var query = 'https://api.mapbox.com/v4/sunnysanwar.5wazn616/tilequery/' + center + '.json?radius=5&limit=1&geometry=polygon&dedupe&access_token=pk.eyJ1Ijoic3VubnlzYW53YXIiLCJhIjoiY2wwNjV5N3kzMDQwbTNib2NhMnd6NGg2dCJ9.501q9aEzAkIe4RzQm-IzQg';
@@ -149,6 +146,5 @@ map.on('load', ()=>{
     });
 });
 </script>
-
 </body>
 </html>
