@@ -33,37 +33,28 @@
         /* transform: translateX(50%); */
     }
 </style>
-
 </head>
-    
 <body>
-
-    <!-- Load the `mapbox-gl-geocoder` plugin. -->
+<!-- Load the `mapbox-gl-geocoder` plugin. -->
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
 <!-- <script src="https://api.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js"></script> -->
 <script src="https://npmcdn.com/@turf/turf/turf.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-
 <div id="right-panel">
 </div>
 <div id="geocoder-container"></div>
 <div id='map'>
 </div>
-
 <script>
-
-    // AccesToken
+// AccesToken
 mapboxgl.accessToken = 'pk.eyJ1Ijoic3VubnlzYW53YXIiLCJhIjoiY2wwNjV5N3kzMDQwbTNib2NhMnd6NGg2dCJ9.501q9aEzAkIe4RzQm-IzQg';
-
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11',
 	zoom: 9,
     center: [-71.4355, 41.7038],
 });
-
 const geocoder = new MapboxGeocoder({
 accessToken: mapboxgl.accessToken,
     marker: {
@@ -71,7 +62,6 @@ accessToken: mapboxgl.accessToken,
     },
     mapboxgl: mapboxgl
 });
- 
 map.addControl(geocoder);
 geocoder.on('result', e => {
     var { bbox, center } = e.result;
@@ -106,8 +96,7 @@ geocoder.on('result', e => {
                     });
             }, 2000);
     });
-})
-
+});
 map.on('load', ()=>{
     map.addSource('data-parcels', {
         'type': 'vector',
