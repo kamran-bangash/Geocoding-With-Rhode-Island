@@ -80,21 +80,21 @@ geocoder.on('result', e => {
             map.fitBounds(bounds, {
                 padding: 320
             });
-            setTimeout(() => {
-                var features = map.queryRenderedFeatures({ layers: ['parcels'], filter: ["==", "LABEL", response.features[0].properties.LABEL] });
+        setTimeout(() => {
+            var features = map.queryRenderedFeatures({ layers: ['parcels'], filter: ["==", "LABEL", response.features[0].properties.LABEL] });
 
-                    var fe = {
-                        "type": "FeatureCollection",
-                        "features": features
-                    };
-                    var bounds = turf.bbox(fe);
-                    features.forEach((feature) => {
-                        var prop = feature.properties;
-                        if (response.features[0].properties.LABEL == prop.LABEL) {
-                            map.setFilter('selected-parcels', ['in', 'LABEL', response.features[0].properties.LABEL]);
-                        }
-                    });
-            }, 2000);
+                var fe = {
+                    "type": "FeatureCollection",
+                    "features": features
+                };
+                var bounds = turf.bbox(fe);
+                features.forEach((feature) => {
+                    var prop = feature.properties;
+                    if (response.features[0].properties.LABEL == prop.LABEL) {
+                        map.setFilter('selected-parcels', ['in', 'LABEL', response.features[0].properties.LABEL]);
+                    }
+                });
+        }, 2000);
     });
 });
 map.on('load', ()=>{
@@ -102,7 +102,6 @@ map.on('load', ()=>{
         'type': 'vector',
         'url': 'mapbox://sunnysanwar.5wazn616'
     });
-
     map.addLayer({
         'id': 'parcels',
         'type': 'fill',
@@ -114,7 +113,6 @@ map.on('load', ()=>{
             'fill-opacity': 0.5,
         },
     });
-
     map.addLayer({
         'id': 'selected-parcels',
         'type': 'fill',
